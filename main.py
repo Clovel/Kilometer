@@ -1,16 +1,21 @@
 import OdometryCSVParser
 import OdometryEntrySorter
 import Plotter
+import sys
+import os
 
 
 def main():
-    print("Hello world, this is Kilometer, the Kilometer parser")
+    print("This is Kilometer, the odometry parser")
 
-    entries = []
-    file = "odometry-data.csv"
+    # Get odometry CSV file from arguments
+    argc = len(sys.argv)
+    if(2 != argc):
+        print("[ERROR] Wrong number of arguments. Arg1 : <path/of/odometry_file>")
+        exit(1)
 
     # Get entries from the CSV file
-    OdometryCSVParser.parse_csv(file, entries)
+    entries = OdometryCSVParser.parse_csv(file, entries)
 
     # Print those entries
     print("[INFO ] Got the following entries from the CSV file")

@@ -11,7 +11,10 @@ def check_string_to_float(s):
         return False
 
 
-def parse_csv(p_file_path, p_entry_array):
+def parse_csv(p_file_path):
+
+    entry_array = []
+
     with open(p_file_path, newline='') as csv_file:
         csv_file_reader = csv.reader(csv_file, delimiter=";", quotechar='|')
         i = 0
@@ -31,6 +34,8 @@ def parse_csv(p_file_path, p_entry_array):
             # entry.print()
             # print("\n\r")
 
-            p_entry_array.append(entry)
+            entry_array.append(entry)
 
             i += 1
+    
+    return entry_array
